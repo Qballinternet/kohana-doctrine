@@ -47,6 +47,11 @@ $classLoader = new \Doctrine\Common\ClassLoader(
         $doctrine_config['proxies_namespace'], $doctrine_config['proxies_path']);
 $classLoader->register();
 
+// defines your "repository" namespace
+$classLoader = new \Doctrine\Common\ClassLoader(
+		$doctrine_config['repositories_namespace'], $doctrine_config['repositories_path']);
+$classLoader->register();
+
 // defines your "extensions" namespace
 $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', $doctrine_config['extensions_path']);
 $classLoader->register();

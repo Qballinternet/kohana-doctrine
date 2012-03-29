@@ -29,6 +29,8 @@ return array(
     // classloader config
     'entities_namespace' => 'Entities',
     'entities_path' => APPPATH . 'classes',
+    'repositories_namespace' => 'Repositories',
+    'repositories_path' => APPPATH . 'classes',
     'proxies_namespace' => 'Proxies',
     'proxies_path' => APPPATH . 'classes',
     // doctrine config
