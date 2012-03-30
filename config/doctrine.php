@@ -26,16 +26,9 @@ return array(
     // location of the "Doctrine" directory
     'doctrine_path' => MODPATH . 'kohana-doctrine/vendor/doctrine-orm/',
     'extensions_path' => MODPATH . 'kohana-doctrine/vendor/extensions/',
-    // classloader config
-    'entities_namespace' => 'Entities',
-    'entities_path' => APPPATH . 'classes',
-    'repositories_namespace' => 'Repositories',
-    'repositories_path' => APPPATH . 'classes',
-    'proxies_namespace' => 'Proxies',
-    'proxies_path' => APPPATH . 'classes',
     // doctrine config
-    'proxy_dir' => APPPATH . 'classes/Proxies',
-    'proxy_namespace' => 'Proxies',
+    'proxy_dir' => APPPATH . 'classes/Proxy',
+    'proxy_namespace' => 'Proxy',
     'mappings_path' => APPPATH . 'mappings/',
     'mappings_driver' => 'yml',
     // mappings between Kohaha database types and Doctrine database drivers

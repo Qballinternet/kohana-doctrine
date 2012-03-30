@@ -37,21 +37,6 @@ $classLoader = new \Doctrine\Common\ClassLoader(
         'Symfony', $doctrine_config['doctrine_path'] . '/Doctrine');
 $classLoader->register();
 
-// defines your "entitites" namespace
-$classLoader = new \Doctrine\Common\ClassLoader(
-        $doctrine_config['entities_namespace'], $doctrine_config['entities_path']);
-$classLoader->register();
-
-// defines your "proxies" namespace
-$classLoader = new \Doctrine\Common\ClassLoader(
-        $doctrine_config['proxies_namespace'], $doctrine_config['proxies_path']);
-$classLoader->register();
-
-// defines your "repository" namespace
-$classLoader = new \Doctrine\Common\ClassLoader(
-		$doctrine_config['repositories_namespace'], $doctrine_config['repositories_path']);
-$classLoader->register();
-
 // defines your "extensions" namespace
 $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', $doctrine_config['extensions_path']);
 $classLoader->register();
