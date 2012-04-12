@@ -35,8 +35,8 @@ return array(
     // @see http://kohanaframework.org/3.1/guide/database/config#connection-settings
     // @see http://www.doctrine-project.org/docs/dbal/2.0/en/reference/configuration.html#connection-details
     'type_driver_mapping' => array(
-        'pdo' => 'pdo',
-        'mysql' => 'pdo_mysql',
+        'PDO'   => 'pdo',
+        'MySQL' => 'pdo_mysql',
         //'N/A' => 'pdo_pgsql',
         //'N/A' => 'pdo_sqlite',
         //'N/A' => 'pdo_oci',
