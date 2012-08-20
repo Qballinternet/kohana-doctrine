@@ -24,22 +24,20 @@
 // include kohana-doctrine config
 $doctrine_config = Kohana::$config->load('doctrine');
 
-// include Doctrine ClassLoader.php
-include $doctrine_config['doctrine_path'] . 'Doctrine/Common/ClassLoader.php';
-
-// defines Doctrine namespace
-$classLoader = new \Doctrine\Common\ClassLoader(
-        'Doctrine', $doctrine_config['doctrine_path']);
-$classLoader->register();
-
-// defines Symfony namespace
-$classLoader = new \Doctrine\Common\ClassLoader(
-        'Symfony', $doctrine_config['doctrine_path'] . '/Doctrine');
-$classLoader->register();
+// Setup with git loader
+require $doctrine_config['doctrine_path'].'lib/Doctrine/ORM/Tools/Setup.php';
+Doctrine\ORM\Tools\Setup::registerAutoloadGit($doctrine_config['doctrine_path']);
 
 // defines your "extensions" namespace
-$classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', $doctrine_config['extensions_path']);
+$classLoader = new \Doctrine\Common\ClassLoader(
+		'DoctrineExtensions', 
+		$doctrine_config['extensions_path']);
+
 $classLoader->register();
 
-// re-use already loaded Doctrine config
+// Make proxies autoloader work so they work when seralizing objects. 
+// Proxies are not PSR-0 compliant.
+Doctrine\ORM\Proxy\Autoloader::register($doctrine_config['proxy_dir'], $doctrine_config['proxy_namespace']);
+
+// Re-use already loaded Doctrine config
 Doctrine_ORM::set_config($doctrine_config);
