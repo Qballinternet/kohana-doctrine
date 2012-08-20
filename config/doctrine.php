@@ -45,5 +45,6 @@ return array(
     'console_commands' => array(),
     'console_helpers' => array(),
     'configuration' => APPPATH.'config/doctrine.xml',
+    'default_database_group' => 'koopplein-core',  // Used for commandline tool
 
 );

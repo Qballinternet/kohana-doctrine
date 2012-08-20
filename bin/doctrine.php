@@ -63,7 +63,7 @@ restore_error_handler();
 restore_exception_handler();
 
 // use "default" if no "--database-group="
-$database_group = 'default';
+$database_group = Kohana::$config->load('doctrine')->get('default_database_group');
 
 // hack to get --database-group and pass it to the Doctrine_ORM constructor
 $argv2 = $argv;
