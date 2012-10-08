@@ -25,17 +25,18 @@
 $doctrine_config = Kohana::$config->load('doctrine');
 
 // Setup with git loader
-require $doctrine_config['doctrine_path'].'lib/Doctrine/ORM/Tools/Setup.php';
-Doctrine\ORM\Tools\Setup::registerAutoloadGit($doctrine_config['doctrine_path']);
+require $doctrine_config['doctrine_path'].'Doctrine/ORM/Tools/Setup.php';
+
+Doctrine\ORM\Tools\Setup::registerAutoloadDirectory($doctrine_config['doctrine_path']);
 
 // defines your "extensions" namespace
 $classLoader = new \Doctrine\Common\ClassLoader(
-		'DoctrineExtensions', 
+		'DoctrineExtensions',
 		$doctrine_config['extensions_path']);
 
 $classLoader->register();
 
-// Make proxies autoloader work so they work when seralizing objects. 
+// Make proxies autoloader work so they work when seralizing objects.
 // Proxies are not PSR-0 compliant.
 Doctrine\ORM\Proxy\Autoloader::register($doctrine_config['proxy_dir'], $doctrine_config['proxy_namespace']);
 
