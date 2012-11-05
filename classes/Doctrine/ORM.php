@@ -68,6 +68,10 @@ class Doctrine_ORM
         $config->setProxyNamespace(self::$doctrine_config['proxy_namespace']);
         $config->setAutoGenerateProxyClasses((Kohana::$environment == Kohana::DEVELOPMENT));
 
+        // extensions
+        // GroupConcat MySQL   -  @todo Should be a config item?
+        $config->addCustomStringFunction('GroupConcat', 'DoctrineExtensions\Query\Mysql\GroupConcat');
+
         // caching configuration
         // @todo make this configurable; use kohana-cache module?
         $cache_implementation = new ArrayCache();
@@ -89,7 +93,7 @@ class Doctrine_ORM
                 break;
             case 'annotation':
                 $driver_implementation = $config->newDefaultAnnotationDriver(array(self::$doctrine_config['mappings_path']));
-            	break;                
+            	break;
             default:
             case 'yaml':
                 $driver_implementation = new YamlDriver(array(self::$doctrine_config['mappings_path']));
