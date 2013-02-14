@@ -5,7 +5,7 @@
  *
  * add an extra input option: --database-group
  * This option is used to select another Kohana database group
- * 
+ *
  * LICENSE: THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS
  * CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED
  * BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
@@ -83,7 +83,7 @@ if(!$input->hasOption('configuration')){
 // end: hack to get --database-group and pass it to the Doctrine_ORM constructor
 
 // create a Doctrine_ORM for one database group
-$doctrine_orm = new Doctrine_ORM($database_group);
+$doctrine_orm = Doctrine_ORM::instance($database_group);
 
 // add console helpers
 $helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
@@ -111,5 +111,5 @@ foreach(Kohana::$config->load('doctrine')->get('console_helpers',array()) as
 $cli->setHelperSet($helperSet);
 
 // Run with helperset and add own commands
-\Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet, 
+\Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet,
 	Kohana::$config->load('doctrine')->get('console_commands',array()));
