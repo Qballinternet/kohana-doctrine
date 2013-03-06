@@ -109,13 +109,11 @@ class Doctrine_ORM
         $config->addCustomStringFunction('GroupConcat', 'DoctrineExtensions\Query\Mysql\GroupConcat');
 
         // caching configuration
-        // @todo make this configurable; use kohana-cache module?
-        $cache_implementation = new ArrayCache();
-        // $cache_implementation = new MemcacheCache();
-        // $cache_implementation = new ApcCache();
+        $cache_class = '\Doctrine\Common\Cache\\'.self::$doctrine_config['cache_implementation'];
+        $cache_implementation = new $cache_class;
         $config->setMetadataCacheImpl($cache_implementation);
-        //$config->setQueryCacheImpl($cache_implementation);
-        //$config->setResultCacheImpl($cache_implementation);
+        $config->setQueryCacheImpl($cache_implementation);
+        $config->setResultCacheImpl($cache_implementation);
 
         // mappings/metadata driver configuration
         $driver_implementation = NULL;
