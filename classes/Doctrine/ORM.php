@@ -111,6 +111,13 @@ class Doctrine_ORM
         // caching configuration
         $cache_class = '\Doctrine\Common\Cache\\'.self::$doctrine_config['cache_implementation'];
         $cache_implementation = new $cache_class;
+
+        // set namespace on cache
+        if ($cache_namespace = self::$doctrine_config['cache_namespace'])
+        {
+        	$cache_implementation->setNamespace($cache_namespace);
+        }
+
         $config->setMetadataCacheImpl($cache_implementation);
         $config->setQueryCacheImpl($cache_implementation);
         $config->setResultCacheImpl($cache_implementation);

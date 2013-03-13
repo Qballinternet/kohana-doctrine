@@ -47,6 +47,6 @@ return array(
     'configuration' => APPPATH.'config/doctrine.xml',
     'default_database_group' => 'koopplein-core',  // Used for commandline tool
     'cache_implementation'   => 'ArrayCache', // MemcacheCache(does not work yet), ApcCache
-
+	'cache_namespace'        => NULL,  // Optional namespace for cache. Useful with multiple sites
 
 );
