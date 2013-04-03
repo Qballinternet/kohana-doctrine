@@ -157,7 +157,7 @@ class Doctrine_ORM
             throw new Kohana_Database_Exception('database-group "' . $database_group . '" doesn\'t exists');
         }
 
-        if($db_config['type'] == 'pdo'){
+        if(strtolower($db_config['type']) == 'pdo'){
             $pdo = new PDO($db_config['connection']['dsn'], $db_config['connection']['username'], $db_config['connection']['password'],
                               array(PDO::ATTR_PERSISTENT => $db_config['connection']['persistent'])
                           );
