@@ -104,9 +104,13 @@ class Doctrine_ORM
         $config->setProxyNamespace(self::$doctrine_config['proxy_namespace']);
         $config->setAutoGenerateProxyClasses((Kohana::$environment == Kohana::DEVELOPMENT));
 
-        // extensions
-        // GroupConcat MySQL   -  @todo Should be a config item?
-        $config->addCustomStringFunction('GroupConcat', 'DoctrineExtensions\Query\Mysql\GroupConcat');
+        // String extensions
+        foreach (
+            Arr::get(self::$doctrine_config->get('enabled_extensions', array()), 'string', array())
+            as $name => $class)
+        {
+        	$config->addCustomStringFunction($name, $class);
+        }
 
         // caching configuration
         $cache_class = '\Doctrine\Common\Cache\\'.self::$doctrine_config['cache_implementation'];

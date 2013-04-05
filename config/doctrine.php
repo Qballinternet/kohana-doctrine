@@ -49,4 +49,12 @@ return array(
     'cache_implementation'   => 'ArrayCache', // MemcacheCache(does not work yet), ApcCache
 	'cache_namespace'        => NULL,  // Optional namespace for cache. Useful with multiple sites
 
+
+	'enabled_extensions' => array(
+// 		'string' => array(
+//     		'GroupConcat'   =>  'DoctrineExtensions\Query\Mysql\GroupConcat',
+//     		'StringAgg'     =>  'DoctrineExtensions\Query\PostgreSql\StringAgg',
+//     	)
+    ),
+
 );
