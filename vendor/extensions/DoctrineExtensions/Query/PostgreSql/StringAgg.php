@@ -5,6 +5,10 @@ namespace DoctrineExtensions\Query\PostgreSql;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
     Doctrine\ORM\Query\Lexer;
 
+/**
+ *  method for postgresql < 9array_version a 9. Does not support ordering
+ *
+ */
 class StringAgg extends FunctionNode
 {
     public $isDistinct = false;
