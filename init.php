@@ -24,10 +24,8 @@
 // include kohana-doctrine config
 $doctrine_config = Kohana::$config->load('doctrine');
 
-// Setup with git loader
-require $doctrine_config['doctrine_path'].'Doctrine/ORM/Tools/Setup.php';
-
-Doctrine\ORM\Tools\Setup::registerAutoloadDirectory($doctrine_config['doctrine_path']);
+// Autoload through composer
+require_once $doctrine_config['doctrine_path'].'vendor/autoload.php';
 
 // defines your "extensions" namespace
 $classLoader = new \Doctrine\Common\ClassLoader(
