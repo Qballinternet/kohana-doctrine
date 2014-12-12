@@ -54,6 +54,7 @@ return array(
 // 		'string' => array(
 //     		'GroupConcat'   =>  'DoctrineExtensions\Query\Mysql\GroupConcat',
 //     		'StringAgg'     =>  'DoctrineExtensions\Query\PostgreSql\StringAgg',
+//          'Translate'     =>  'DoctrineExtensions\Query\PostgreSql\Translate',
 //     	)
     ),
 
