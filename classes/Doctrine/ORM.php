@@ -39,22 +39,22 @@ class Doctrine_ORM
 {
 
     /**
-     * @var array 
+     * @var array
      */
     private static $doctrineConfig;
 
     /**
-     * @var array 
+     * @var array
      */
     private static $databaseConfig;
 
     /**
-     * @var EventManager 
+     * @var EventManager
      */
     private $evm;
 
     /**
-     * @var EntityManager 
+     * @var EntityManager
      */
     private $em;
 
@@ -252,6 +252,16 @@ class Doctrine_ORM
     }
 
     /**
+     * Get EntityManager (alias)
+     *
+     * @return \Doctrine\ORM\EntityManager
+     */
+    public function get_entity_manager()
+    {
+        return $this->getEntityManager();
+    }
+
+    /**
      * get EventManager
      *
      * @return \Doctrine\Common\EventManager
@@ -259,6 +269,16 @@ class Doctrine_ORM
     public function getEventManager()
     {
         return $this->evm;
+    }
+
+    /**
+     * Get EventManager (alias)
+     *
+     * @return \Doctrine\Common\EventManager
+     */
+    public function get_event_manager()
+    {
+        return $this->getEventManager();
     }
 
 }
