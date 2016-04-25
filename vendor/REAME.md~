@@ -1,1 +1,0 @@
-download: https://github.com/doctrine/doctrine2/archive/v2.4.1.tar.gz
