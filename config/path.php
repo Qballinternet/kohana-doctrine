@@ -6,8 +6,8 @@
  */
 return array(
     // path
-    'application' => '/../../../../../application',
-    'modules'     => '/../../../../../vendor/kohana/modules',
-    'system'      => '/../../../../../vendor/kohana/system',
+    'application' => '/../../../application',
+    'modules'     => '/../../../vendor/kohana/modules',
+    'system'      => '/../../../vendor/kohana/system',
 );
 

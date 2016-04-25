@@ -53,7 +53,7 @@ restore_error_handler();
 restore_exception_handler();
 
 // use "default" if no "--database-group="
-$database_group = 'default';
+$database_group = Kohana::$config->load('doctrine')->get('default_database_group');
 
 // hack to get --database-group and pass it to the Doctrine_ORM constructor
 $argv2 = $argv;
@@ -71,7 +71,7 @@ if (!$input->hasOption('configuration')) {
 
 // end: hack to get --database-group and pass it to the Doctrine_ORM constructor
 // create a Doctrine_ORM for one database group
-$doctrine_orm = new Doctrine_ORM($database_group);
+$doctrine_orm = Doctrine_ORM::instance($database_group);
 
 // add console helpers
 $helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
@@ -98,7 +98,8 @@ foreach (Kohana::$config->load('doctrine')->get('console_helpers', array()) as
 $cli->setHelperSet($helperSet);
 
 // Run with helperset and add own commands
-\Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet, Kohana::$config->load('doctrine')->get('console_commands', array()));
+\Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet,
+	Kohana::$config->load('doctrine')->get('console_commands',array()));
 
 /**
  * init from configured paths

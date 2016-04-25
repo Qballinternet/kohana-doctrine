@@ -61,9 +61,9 @@ return [
     'cache_implementation'   => 'ArrayCache',
     'cache_namespace'        => NULL,
     'enabled_extensions'     => [
-        // 		'string' => array(
-        //     		'GroupConcat'   =>  'DoctrineExtensions\Query\Mysql\GroupConcat',
-        //     		'StringAgg'     =>  'DoctrineExtensions\Query\PostgreSql\StringAgg',
+        //      'string' => array(
+        //          'GroupConcat'   =>  'DoctrineExtensions\Query\Mysql\GroupConcat',
+        //          'StringAgg'     =>  'DoctrineExtensions\Query\PostgreSql\StringAgg',
         //        )
     ],
 ];
