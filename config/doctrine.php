@@ -17,45 +17,53 @@
  *
  * @category  module
  * @package   kohana-doctrine
- * @author    gimpe <gimpehub@intljaywalkers.com>
+ * @author    gimpe <gimpehub@intljaywalkers.com> Oleg Abrazhaev <seyferseed@mail.ru>
  * @copyright 2011 International Jaywalkers
  * @license   http://creativecommons.org/licenses/by/3.0/ CC BY 3.0
- * @link      http://github.com/gimpe/kohana-doctrine
+ * @link      http://github.com/seyfer/kohana-doctrine
  */
-return array(
+return [
     // location of the "Doctrine" directory
-    'doctrine_path' => MODPATH . 'kohana-doctrine/vendor/doctrine-orm/',
-    'extensions_path' => MODPATH . 'kohana-doctrine/vendor/extensions/',
+    'vendor_path'            => APPPATH . '../vendor/',
+    'doctrine_path'          => APPPATH . '../vendor/doctrine/',
+    'extensions_path'        => APPPATH . '../vendor/gedmo/doctrine-extensions/lib/Gedmo/',
+    // classloader config
+    'entities_namespace'     => 'Entities',
+    'entities_path'          => APPPATH . 'classes',
+    'proxies_namespace'      => 'Proxies',
+    'proxies_path'           => APPPATH . 'classes',
     // doctrine config
-    'proxy_dir' => APPPATH . 'classes/Proxy',
-    'proxy_namespace' => 'Proxy',
-    'mappings_path' => APPPATH . 'mappings/',
-    'mappings_driver' => 'yml',
+    'proxy_dir'              => APPPATH . 'classes/Doctrine/Proxies',
+    'proxy_namespace'        => 'Proxies',
+    'mappings_path'          => APPPATH . 'classes/Doctrine/Entity',
+    'mappings_driver'        => 'yml',
     // mappings between Kohaha database types and Doctrine database drivers
-    // @see http://kohanaframework.org/3.1/guide/database/config#connection-settings
-    // @see http://www.doctrine-project.org/docs/dbal/2.0/en/reference/configuration.html#connection-details
-    'type_driver_mapping' => array(
-        'PDO'   => 'pdo',
-        'MySQL' => 'pdo_mysql',
+    // @see http://kohanaframework.org/3.3/guide/database/config#connection-settings
+    // @see http://www.doctrine-project.org/docs/dbal/2.4/en/reference/configuration.html#connection-details
+    'type_driver_mapping'    => [
+        'pdo'        => 'pdo_mysql',
+        'mysql'      => 'pdo_mysql',
+        'PDO'        => 'pdo_mysql',
+        'MySQL'      => 'pdo_mysql',
+        'MySQLi'     => 'mysqli',
+        'PDO_MySQL'  => 'pdo_mysql',
+        'PDO_MySQLi' => 'mysqli',
         //'N/A' => 'pdo_pgsql',
         //'N/A' => 'pdo_sqlite',
         //'N/A' => 'pdo_oci',
         //'N/A' => 'oci8',
-    ),
-    'console_commands' => array(),
-    'console_helpers' => array(),
-    'configuration' => APPPATH.'config/doctrine.xml',
-    'default_database_group' => 'koopplein-core',  // Used for commandline tool
-    'cache_implementation'   => 'ArrayCache', // MemcacheCache(does not work yet), ApcCache
-	'cache_namespace'        => NULL,  // Optional namespace for cache. Useful with multiple sites
-
-
-	'enabled_extensions' => array(
-// 		'string' => array(
-//     		'GroupConcat'   =>  'DoctrineExtensions\Query\Mysql\GroupConcat',
-//     		'StringAgg'     =>  'DoctrineExtensions\Query\PostgreSql\StringAgg',
-//          'Translate'     =>  'DoctrineExtensions\Query\PostgreSql\Translate',
-//     	)
-    ),
-
-);
+    ],
+    'console_commands'       => [],
+    'console_helpers'        => [],
+    'configuration'          => APPPATH . 'config/doctrine.xml',
+    'debug'                  => TRUE,
+    'default_database_group' => 'default',
+    'cache_implementation'   => 'ArrayCache',
+    'cache_namespace'        => NULL,
+    'enabled_extensions'     => [
+        //      'string' => array(
+        //          'GroupConcat'   =>  'DoctrineExtensions\Query\Mysql\GroupConcat',
+        //          'StringAgg'     =>  'DoctrineExtensions\Query\PostgreSql\StringAgg',
+        //        )
+    ],
+];
